@@ -52,6 +52,7 @@ def load_all_raw_tables(session):
                     load_raw_table(session, tname=tname, s3dir=s3dir, year=year, schema=schema)
             else:
                 load_raw_table(session, tname=tname, s3dir=s3dir, schema=schema)
+            print(f"{tname} created")
 
     _ = session.sql("ALTER WAREHOUSE HOL_WH SET WAREHOUSE_SIZE = XSMALL").collect()
 
@@ -79,3 +80,4 @@ if __name__ == "__main__":
 #    validate_raw_tables(session)
 
     session.close()
+    
